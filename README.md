@@ -1,2 +1,2 @@
 # joy
-Take Notes Admin Panel
+Take Notes Admin Panel.
