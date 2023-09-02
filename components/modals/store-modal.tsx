@@ -23,7 +23,7 @@ export const StoreModal = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			name: "Joy Store"
+			name: ""
 		},
 	});
 
@@ -31,8 +31,9 @@ export const StoreModal = () => {
 		try {
 			setLoading(true);
 			const response = await axios.post("/api/stores", data);
-
-			toast.success("Store created successfully");
+			if (response.status === 200) {
+				window.location.assign(`/${response.data.id}`);
+			}
 		} catch (error) {
 			toast.error("Something went wrong");
 		} finally {
